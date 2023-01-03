@@ -237,8 +237,8 @@ void heapSort(T_heap *p){
 }
 
 
-void codageBitsFromTableAscii(T_heap *p, char c, char* rep){
-	
+char* codageBitsFromTableAscii(T_heap *p, char c){
+	rep = malloc( 8 * sizeof(char));
 	while(p->tree[c]!=-256){
 		if(p->tree[c]<0){
 			strcat(rep, "0");
@@ -249,17 +249,52 @@ void codageBitsFromTableAscii(T_heap *p, char c, char* rep){
 			c = p->tree[c];
 		}
 	}
+	return rep;
 }
 
 
+int getRoot(T_heap *p){
+	int k = p->nbElt; 
+	for(k; k>0; k--){
+		if(p->tree[k]!=-256){
+			return k+1;
+		}
+	}
+	if(k==0){
+		return NULL;
+	}
+}
 
 
-
-
-
-
-
-
+char* decodagebitsFromBits(T_heap *p, char * input){
+	int i=0;
+	int k;
+	int root;
+	
+	rep = malloc(sizeof(input)); 
+	
+	for(i; i<strlen(input); i++){
+		k = 0;
+		root = getRoot(p);
+		for(k; k<p->nbElt; k++){
+		
+			if((p->tree[k] == root) && (i=="1")) {
+				root = k;
+				k = 0;
+				i++;
+			}
+			if((p->tree[k] == -root) && (i=="0")){
+				strcat(rep, "k");
+				i++;
+				
+			}
+			
+		}
+		
+	}
+	return rep;
+	
+}
 
 
 
