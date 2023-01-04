@@ -201,6 +201,7 @@ void buildHeap(T_heap *p){
 
 void heapSort(T_heap *p){
 	int k = 0;
+	int i = 0;
 	int Newnoeud = 128;
 	int temp;
 	int nbtotchar = 0;
@@ -216,6 +217,10 @@ void heapSort(T_heap *p){
 	
 	//init hufftree -256
 	T_heap *Hufftree = NewHeap(255);
+	for(i; i<256; i++){
+		Hufftree->Tree[i] = -256;	
+	}
+	
 	
 	while(t->nbElt > 1){
 		temp = removeMinPointeur(t);
@@ -278,12 +283,12 @@ char* decodagebitsFromBits(T_heap *p, char * input){
 		root = getRoot(p);
 		for(k; k<p->nbElt; k++){
 		
-			if((p->tree[k] == root) && (i=="1")) {
+			if((p->tree[k] == root) && (k>=128)) {
 				root = k;
 				k = 0;
 				i++;
 			}
-			if((p->tree[k] == -root) && (i=="0")){
+			if((p->tree[k] == -root) && (k<128)){
 				strcat(rep, "k");
 				i++;
 				
