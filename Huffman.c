@@ -199,7 +199,7 @@ void buildHeap(T_heap *p){
 
 
 
-void heapSort(T_heap *p){
+void HuffmanTree(T_heap *p){
 	int k = 0;
 	int i = 0;
 	int Newnoeud = 128;
