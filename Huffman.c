@@ -271,7 +271,7 @@ int getRoot(T_heap *p){
 }
 
 
-char* decodagebitsFromBits(T_heap *p, char * input){
+char* decodageBits(T_heap *p, char * input){
 	int i=0;
 	int k;
 	int root;
